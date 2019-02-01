@@ -12,10 +12,11 @@ public class PlayerBall : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
+        //rb
         rb = GetComponent<Rigidbody>();
 
     }
-
+    
 
 
 
