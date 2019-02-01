@@ -50,25 +50,25 @@ desktop: 1920x1200 59Hz; virtual: 3840x1200 at -1920,0
 <RI> Input initialized.
 <RI> Initialized touch support.
 <RI> Initialized touch support.
-UnloadTime: 1.005227 ms
+UnloadTime: 0.801280 ms
 Setting up 3 worker threads for Enlighten.
-  Thread -> id: 247c -> priority: 1 
-  Thread -> id: 53c -> priority: 1 
-  Thread -> id: 1fa0 -> priority: 1 
-UnloadTime: 0.774827 ms
+  Thread -> id: 28f8 -> priority: 1 
+  Thread -> id: 2c48 -> priority: 1 
+  Thread -> id: 2dac -> priority: 1 
+UnloadTime: 0.807823 ms
 Setting up 3 worker threads for Enlighten.
-  Thread -> id: 278c -> priority: 1 
-  Thread -> id: 1ef8 -> priority: 1 
-  Thread -> id: 6ac -> priority: 1 
-Attempt to send to not connected connection {1}
- 
-(Filename:  Line: 362)
-
-Failed to send internal buffer channel:1 bytesToSend:630
+  Thread -> id: 28a4 -> priority: 1 
+  Thread -> id: 371c -> priority: 1 
+  Thread -> id: 1ba8 -> priority: 1 
+Did not find target for sync message for 19
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Send Error: WrongConnection channel:1 bytesToSend:630
+Did not find target for sync message for 21
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Did not find target for sync message for 22
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
