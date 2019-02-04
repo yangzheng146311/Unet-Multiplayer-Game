@@ -51,10 +51,16 @@ public class PlayerBall : NetworkBehaviour
         if (collision.gameObject.tag.Equals("res"))
         {
 
-            collision.transform.GetComponent<BoxCollider>().isTrigger = true;
-            Destroy(collision.transform.GetComponent<Rigidbody>());
-            collision.transform.SetParent(transform);
-            collision.transform.localPosition = Vector3.zero;
+            //collision.transform.GetComponent<BoxCollider>().isTrigger = true;
+            //Destroy(collision.transform.GetComponent<Rigidbody>());
+            //collision.transform.SetParent(transform);
+            //collision.transform.localPosition = Vector3.zero;
+
+
+            //collision.transform.GetComponent<Rigidbody>().AddForce((transform.position - collision.transform.position).normalized * 10.0f);
+            //collision.transform.SetParent(transform);
+
+
 
         }
     }
