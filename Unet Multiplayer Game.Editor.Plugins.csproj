@@ -134,9 +134,19 @@
     <Reference Include="System.Threading">
       <HintPath>Assets/Plugins/GitHub/Editor/System.Threading.dll</HintPath>
     </Reference>
+    <Reference Include="GETween">
+      <HintPath>Assets/GUI Animator FREE/Scripts/GETween.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIAnimatorFREE">
+      <HintPath>Assets/GUI Animator FREE/Scripts/GUIAnimatorFREE.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unet Multiplayer Game.Plugins.csproj">
+      <Project>{8F727F83-6786-B63E-48CA-034DBD949CBA}</Project>
+      <Name>Unet Multiplayer Game.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unet Multiplayer Game.Plugins.unityproj">
       <Project>{8F727F83-6786-B63E-48CA-034DBD949CBA}</Project>
       <Name>Unet Multiplayer Game.Plugins</Name>
     </ProjectReference>
@@ -146,6 +156,9 @@
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Fantasy Skybox\Readme.txt" />
+    <None Include="Assets\Fantasy Skybox\Readme\Readme.txt" />
+    <None Include="Assets\GUI Animator FREE\Readme.txt" />
     <None Include="Assets\Plugins\GitHub\Editor\credits.txt" />
     <None Include="Assets\Plugins\GitHub\Editor\eula.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
