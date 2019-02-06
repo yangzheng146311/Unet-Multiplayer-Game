@@ -24,7 +24,7 @@ public class Resources : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player")|| collision.gameObject.tag.Equals("res"))
         {
             //transform.SetParent(collision.transform);
             //transform.SetParent(collision.transform);
@@ -40,12 +40,13 @@ public class Resources : MonoBehaviour {
 
 
             //Destroy(transform.GetComponent<Rigidbody>());
-            //Destroy(transform.GetComponent<MeshCollider>());
+           // Destroy(transform.GetComponent<MeshCollider>());
             //isAttached = true;
            // Vector3 forceDir = (collision.transform.position - transform.position).normalized;
             //gameObject.transform.GetComponent<Rigidbody>().AddForce(forceDir * 20.0f);
             ////attachObject = collision.gameObject;
             transform.SetParent(collision.transform);
+            
 
 
            

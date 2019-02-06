@@ -16,12 +16,15 @@ public class PlayerBall : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
 
     }
-    
 
 
 
 
 
+    private void Update()
+    {
+        CastObject();
+    }
 
     public override void OnStartLocalPlayer()
     {
@@ -63,6 +66,27 @@ public class PlayerBall : NetworkBehaviour
 
 
         }
+    }
+
+
+    private void CastObject()
+    {
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Transform child = transform.GetChild(0);
+            child.SetParent(null);
+            Vector3 vDir = gameObject.GetComponent<Rigidbody>().velocity.normalized;
+            child.gameObject.AddComponent<Rigidbody>();
+            child.GetComponent<Rigidbody>().AddForce(vDir * 10.0f);
+            //child.gameObject.AddComponent<Rigidbody>();
+           
+            //child.gameObject.GetComponent<Rigidbody>().AddForce(forwardWorld* 100.0f);
+          
+
+
+        }
+
     }
 
 }
