@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.AI;
+using System;
 
 public class Health : NetworkBehaviour {
 
@@ -14,12 +16,39 @@ public class Health : NetworkBehaviour {
 
     private NetworkStartPosition[] spawnPoints;
 
+
+    [SerializeField]
+    Transform target;
+
+    NavMeshAgent agent;
+
+
     void Start()
     {
         if (isLocalPlayer)
         {
             spawnPoints = FindObjectsOfType<NetworkStartPosition>();
         }
+
+       
+    }
+
+    void Update()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (!target) Debug.Log("No player");
+
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        if (!agent) Debug.Log("No agent");
+        else
+            SetDestination();
+
+    }
+
+    private void SetDestination()
+    {
+        if(target)
+        agent.SetDestination(target.transform.position);
     }
 
     public void TakeDamage(int damage)
@@ -55,7 +84,7 @@ public class Health : NetworkBehaviour {
 
         if (spawnPoints != null && spawnPoints.Length > 0)
         {
-            spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].transform.position;
         }
 
 

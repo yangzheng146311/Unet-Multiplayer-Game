@@ -46,6 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Fantasy Skybox\Scripts\FSPlayer.cs" />
+     <Compile Include="Assets\Fantasy Skybox\Scripts\FantasySkyboxUIController.cs" />
+     <Compile Include="Assets\GUI Animator FREE\Scripts\Demo\Demo.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
@@ -58,10 +61,16 @@
      <None Include="Assets\Plugins\GitHub\Editor\credits.txt" />
      <None Include="Assets\read me.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\Fantasy Skybox\Readme.txt" />
+     <None Include="Assets\Fantasy Skybox\Readme\Readme.txt" />
+     <None Include="Assets\GUI Animator FREE\Readme.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\Plugins\GitHub\Editor\eula.txt" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>F:/UnityProjects/MyPrototype/Unet-Multiplayer-Game/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/UnityInstaller/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -82,6 +91,12 @@
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>F:/UnityInstaller/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+ <Reference Include="GETween">
+ <HintPath>F:/UnityProjects/MyPrototype/Unet-Multiplayer-Game/Assets/GUI Animator FREE/Scripts/GETween.dll</HintPath>
+ </Reference>
+ <Reference Include="GUIAnimatorFREE">
+ <HintPath>F:/UnityProjects/MyPrototype/Unet-Multiplayer-Game/Assets/GUI Animator FREE/Scripts/GUIAnimatorFREE.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

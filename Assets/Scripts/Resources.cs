@@ -40,7 +40,11 @@ public class Resources : MonoBehaviour {
 
 
             //Destroy(transform.GetComponent<Rigidbody>());
-           // Destroy(transform.GetComponent<MeshCollider>());
+
+            transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+            if(transform.GetComponent<MeshCollider>())
+             Destroy(transform.GetComponent<MeshCollider>());
             //isAttached = true;
            // Vector3 forceDir = (collision.transform.position - transform.position).normalized;
             //gameObject.transform.GetComponent<Rigidbody>().AddForce(forceDir * 20.0f);
