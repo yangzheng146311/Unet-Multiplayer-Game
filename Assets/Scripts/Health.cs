@@ -13,15 +13,19 @@ public class Health : NetworkBehaviour {
     public int currentHealth = maxHealth;
     public Slider healthSlider;
     public bool destroyOnDeath = false;
+    
 
     private NetworkStartPosition[] spawnPoints;
 
 
     [SerializeField]
-    Transform target;
+    GameObject [] target;
+    GameObject curTar;
 
     NavMeshAgent agent;
 
+    float minDis;
+    int closestTarIndex = -1;
 
     void Start()
     {
@@ -35,8 +39,29 @@ public class Health : NetworkBehaviour {
 
     void Update()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        if (!target) Debug.Log("No player");
+        target = GameObject.FindGameObjectsWithTag("Player");
+
+
+
+        minDis = 9999;
+        for (int i = 0; i < target.Length; i++)
+        {
+            Vector3 disV = transform.position - target[i].transform.position;
+            float dis = disV.magnitude;
+            if (dis < minDis)
+            {
+                minDis = dis;
+                closestTarIndex = i;
+                curTar = target[i];
+
+
+            }
+        }
+       
+
+
+
+        //if (!target) Debug.Log("No player");
 
         agent = gameObject.GetComponent<NavMeshAgent>();
         if (!agent) Debug.Log("No agent");
@@ -47,8 +72,8 @@ public class Health : NetworkBehaviour {
 
     private void SetDestination()
     {
-        if(target)
-        agent.SetDestination(target.transform.position);
+        if(curTar)
+        agent.SetDestination(curTar.gameObject.transform.position);
     }
 
     public void TakeDamage(int damage)

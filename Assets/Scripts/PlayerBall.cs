@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 public class PlayerBall : NetworkBehaviour
 {
 
 
     public float speed=10.0f;
     private Rigidbody rb;
+    private int score = 0;
+    GameObject ObjText;
 
     // Use this for initialization
     void Start()
     {
         //rb
         rb = GetComponent<Rigidbody>();
-
+        ObjText = GameObject.FindGameObjectWithTag("UI");
         
+
+        if (ObjText) Debug.Log("have UI");
+        else  Debug.Log("no UI");
+
     }
 
 
@@ -24,7 +31,13 @@ public class PlayerBall : NetworkBehaviour
 
     private void Update()
     {
-       // CastObject();
+        if (isLocalPlayer)
+        {
+            score = transform.childCount;
+
+            ObjText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
+        }
+
     }
 
     public override void OnStartLocalPlayer()
@@ -67,7 +80,7 @@ public class PlayerBall : NetworkBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
 
-            rb.AddForce(dirMove * speed * 100.0f);
+            rb.AddForce(dirMove * speed * 30.0f);
 
         }
         if (Input.GetKey(KeyCode.S))
@@ -100,18 +113,10 @@ public class PlayerBall : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("res"))
+        if (collision.gameObject.tag.Equals("Enemy"))
         {
-
-            //collision.transform.GetComponent<BoxCollider>().isTrigger = true;
-            //Destroy(collision.transform.GetComponent<Rigidbody>());
-            //collision.transform.SetParent(transform);
-            //collision.transform.localPosition = Vector3.zero;
-
-
-            //collision.transform.GetComponent<Rigidbody>().AddForce((transform.position - collision.transform.position).normalized * 10.0f);
-            //collision.transform.SetParent(transform);
-
+            if(transform.childCount>0)
+            Destroy(transform.GetChild(0).gameObject);
 
 
         }
