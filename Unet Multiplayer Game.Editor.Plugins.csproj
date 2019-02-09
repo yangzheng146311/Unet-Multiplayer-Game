@@ -113,6 +113,12 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="GETween">
+      <HintPath>Assets/GUI Animator FREE/Scripts/GETween.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIAnimatorFREE">
+      <HintPath>Assets/GUI Animator FREE/Scripts/GUIAnimatorFREE.dll</HintPath>
+    </Reference>
     <Reference Include="AsyncBridge.Net35">
       <HintPath>Assets/Plugins/GitHub/Editor/AsyncBridge.Net35.dll</HintPath>
     </Reference>
@@ -133,12 +139,6 @@
     </Reference>
     <Reference Include="System.Threading">
       <HintPath>Assets/Plugins/GitHub/Editor/System.Threading.dll</HintPath>
-    </Reference>
-    <Reference Include="GETween">
-      <HintPath>Assets/GUI Animator FREE/Scripts/GETween.dll</HintPath>
-    </Reference>
-    <Reference Include="GUIAnimatorFREE">
-      <HintPath>Assets/GUI Animator FREE/Scripts/GUIAnimatorFREE.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
