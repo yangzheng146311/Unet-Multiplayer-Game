@@ -10,18 +10,22 @@ public class PlayerBall : NetworkBehaviour
     public float speed=10.0f;
     private Rigidbody rb;
     private int score = 0;
-    GameObject ObjText;
+    GameObject scoreText;
+    GameObject timeText;
+    const float MAX_TIME = 30.0f;
+    float curTime = MAX_TIME;
 
     // Use this for initialization
     void Start()
     {
         //rb
         rb = GetComponent<Rigidbody>();
-        ObjText = GameObject.FindGameObjectWithTag("UI");
-        
 
-        if (ObjText) Debug.Log("have UI");
-        else  Debug.Log("no UI");
+        scoreText = GameObject.Find("Score_text");
+        timeText = GameObject.Find("Time_text");
+
+
+
 
     }
 
@@ -35,7 +39,10 @@ public class PlayerBall : NetworkBehaviour
         {
             score = transform.childCount;
 
-            ObjText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
+            scoreText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
+
+            CountDown();
+          
         }
 
     }
@@ -142,5 +149,22 @@ public class PlayerBall : NetworkBehaviour
         //}
 
     }
+
+
+   
+    private void CountDown()
+    {
+        if (curTime > 0)
+        {
+            curTime -= Time.deltaTime;
+        }
+        int t = (int)curTime;
+        timeText.GetComponent<Text>().text = "Time:" + t.ToString();
+        
+
+
+    }
+
+
 
 }

@@ -40,9 +40,6 @@ public class Health : NetworkBehaviour {
     void Update()
     {
         target = GameObject.FindGameObjectsWithTag("Player");
-
-
-
         minDis = 9999;
         for (int i = 0; i < target.Length; i++)
         {
@@ -57,11 +54,6 @@ public class Health : NetworkBehaviour {
 
             }
         }
-       
-
-
-
-        //if (!target) Debug.Log("No player");
 
         agent = gameObject.GetComponent<NavMeshAgent>();
         if (!agent) Debug.Log("No agent");

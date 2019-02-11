@@ -11,6 +11,8 @@ public class EnemySpawner : NetworkBehaviour {
 
     public override void OnStartServer()
     {
+
+        
         for (int i = 0; i < numberOfEnemies; i++)
         {
             Vector3 position = new Vector3(Random.Range(-6f, 6f), 1, Random.Range(-6f, 6f));
