@@ -24,8 +24,7 @@ public class PlayerBall : NetworkBehaviour
         scoreText = GameObject.Find("Score_text");
         timeText = GameObject.Find("Time_text");
 
-
-
+        
 
     }
 
@@ -35,6 +34,10 @@ public class PlayerBall : NetworkBehaviour
 
     private void Update()
     {
+
+
+        System.Random r = new System.Random();
+        Debug.Log(r.Next(0, 1));
         if (isLocalPlayer)
         {
             score = transform.childCount;
