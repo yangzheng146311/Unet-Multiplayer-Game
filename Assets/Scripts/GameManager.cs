@@ -1,27 +1,95 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
+public class GameManager:NetworkBehaviour{
 
-public class GameManager {
+    const float MAXTIME = 30.0f;
 
-    static public GameManager instance;
-    public int severTime;
-     
-	
+    [SyncVar]
+    float curTime = MAXTIME;
 
-    static public GameManager GetInstance()
-    { 
-    if(instance==null)
-        {
+    [SyncVar]
+    int winnerIndex = -1;
 
-           
+    [SyncVar]
+    int maxScore;
 
-        }
+    GameObject timeText;
 
-        return instance;
+    GameObject[] players;
 
+  
+
+
+
+    void Start()
+    {
+
+        timeText = GameObject.Find("Time_text");
 
     }
 
+
+    void Update()
+    {
+        if (isServer)
+        {
+            CountDown();
+        }
+          
+
+        if (isLocalPlayer)
+        {
+            timeText.GetComponent<Text>().text = "Time:" + ((int)curTime).ToString();
+        }
+
+        
+        //CmdUpdateCurrentWinner();
+
+    }
+
+
+  
+    private void CountDown()
+    {
+        if (curTime > 0)
+        {
+            //Debug.Log(curTime);
+            curTime-= Time.deltaTime;
+        }
+       
+    }
+
+   [Command]
+    private void CmdUpdateCurrentWinner()
+    {
+
+
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        Debug.Log("length="+players.Length);
+         maxScore = 0;
+
+        for (int i = 0; i <players.Length; i++)
+        {
+            players[i].GetComponent<PlayerBall>().PlayerIndex = i;
+
+            if(players[i].GetComponent<PlayerBall>().Score > maxScore)
+            {
+
+                maxScore = players[i].GetComponent<PlayerBall>().Score;
+                winnerIndex = players[i].GetComponent<PlayerBall>().PlayerIndex;
+
+            }
+
+        }
+
+        Debug.Log("maxScore="+maxScore);
+        Debug.Log("winnerIndex="+winnerIndex);
+
+
+    }
 
 }

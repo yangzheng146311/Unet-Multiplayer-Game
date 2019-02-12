@@ -11,10 +11,8 @@ public class PlayerBall : NetworkBehaviour
     private Rigidbody rb;
     private int score = 0;
     GameObject scoreText;
-    GameObject timeText;
-    const float MAX_TIME = 30.0f;
-    float curTime = MAX_TIME;
-
+    private int playerIndex;
+  
     // Use this for initialization
     void Start()
     {
@@ -22,7 +20,6 @@ public class PlayerBall : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
 
         scoreText = GameObject.Find("Score_text");
-        timeText = GameObject.Find("Time_text");
 
         
 
@@ -36,15 +33,14 @@ public class PlayerBall : NetworkBehaviour
     {
 
 
-        System.Random r = new System.Random();
-        Debug.Log(r.Next(0, 1));
+        
         if (isLocalPlayer)
-        {
+        { 
             score = transform.childCount;
 
             scoreText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
 
-            CountDown();
+          
           
         }
 
@@ -133,40 +129,45 @@ public class PlayerBall : NetworkBehaviour
     }
 
 
-    private void CastObject()
+    public int Score
     {
+        get
+        {
 
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Transform child = transform.GetChild(0);
-        //    child.SetParent(null);
-        //    Vector3 vDir = gameObject.GetComponent<Rigidbody>().velocity.normalized;
-        //    child.gameObject.AddComponent<Rigidbody>();
-        //    child.GetComponent<Rigidbody>().AddForce(vDir * 10.0f);
-        //    //child.gameObject.AddComponent<Rigidbody>();
-           
-        //    //child.gameObject.GetComponent<Rigidbody>().AddForce(forwardWorld* 100.0f);
-          
+            return score;
+
+        }
 
 
-        //}
+        set
+        {
 
+            this.score = value;
+
+        }
+       
     }
 
+    public int PlayerIndex
+    {
+
+        get
+        {
+
+            return this.playerIndex;
+
+        }
+
+        set
+        {
+
+            this.playerIndex = value;
+
+        }
+
+    }
 
    
-    private void CountDown()
-    {
-        if (curTime > 0)
-        {
-            curTime -= Time.deltaTime;
-        }
-        int t = (int)curTime;
-        timeText.GetComponent<Text>().text = "Time:" + t.ToString();
-        
-
-
-    }
 
 
 
