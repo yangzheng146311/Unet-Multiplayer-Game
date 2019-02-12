@@ -9,18 +9,41 @@ public class PlayerBall : NetworkBehaviour
 
     public float speed=10.0f;
     private Rigidbody rb;
+    
+
+    [SyncVar]
     private int score = 0;
+
+
     GameObject scoreText;
+    GameMenu gameMenu;
+   
+
     private int playerIndex;
-  
-    // Use this for initialization
-    void Start()
+
+
+
+
+
+    private void Awake()
     {
         //rb
         rb = GetComponent<Rigidbody>();
-
+        
         scoreText = GameObject.Find("Score_text");
+  
 
+
+
+    }
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+        gameMenu = GameObject.FindObjectOfType<GameMenu>();
         
 
     }
@@ -34,15 +57,40 @@ public class PlayerBall : NetworkBehaviour
 
 
         
-        if (isLocalPlayer)
+        if (isServer==true) 
         { 
             score = transform.childCount;
 
+        }
+
+        if (isLocalPlayer)
+        {
             scoreText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
 
-          
-          
+
+            Debug.Log(GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime);
+            if (GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime <= 0)
+            {
+                int i = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().WinnerIndex;
+
+                if (PlayerIndex == i)
+                {
+                    Debug.Log("I win");
+
+                    gameMenu.EnableWinTips();
+                }
+                else
+                {
+                    Debug.Log("I lose");
+                    gameMenu.EnableLoseTips();
+                }
+
+
+                //Time.timeScale = 0;
+            }
         }
+
+       
 
     }
 

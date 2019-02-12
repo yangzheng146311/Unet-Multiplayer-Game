@@ -10,15 +10,17 @@ public class GameManager:NetworkBehaviour{
     [SyncVar]
     float curTime = MAXTIME;
 
-    [SyncVar]
+    //[SyncVar]
     int winnerIndex = -1;
 
-    [SyncVar]
+   // [SyncVar]
     int maxScore;
 
     GameObject timeText;
 
     GameObject[] players;
+
+    
 
   
 
@@ -38,15 +40,17 @@ public class GameManager:NetworkBehaviour{
         {
             CountDown();
         }
-          
-
-        if (isLocalPlayer)
-        {
-            timeText.GetComponent<Text>().text = "Time:" + ((int)curTime).ToString();
-        }
+         
+         
+        timeText.GetComponent<Text>().text = "Time:" + ((int)curTime).ToString();
+        
 
         
-        //CmdUpdateCurrentWinner();
+        UpdateCurrentWinner();
+
+
+
+       
 
     }
 
@@ -62,8 +66,8 @@ public class GameManager:NetworkBehaviour{
        
     }
 
-   [Command]
-    private void CmdUpdateCurrentWinner()
+   //[Command]
+    private void UpdateCurrentWinner()
     {
 
 
@@ -75,6 +79,9 @@ public class GameManager:NetworkBehaviour{
         for (int i = 0; i <players.Length; i++)
         {
             players[i].GetComponent<PlayerBall>().PlayerIndex = i;
+
+
+            Debug.Log("Player Num " + i + "score=" + players[i].GetComponent<PlayerBall>().Score);
 
             if(players[i].GetComponent<PlayerBall>().Score > maxScore)
             {
@@ -92,4 +99,31 @@ public class GameManager:NetworkBehaviour{
 
     }
 
+
+
+
+    public int WinnerIndex
+    {
+        get
+        {
+
+            return winnerIndex;
+
+        }
+
+
+    }
+
+    public float CurTime
+    {
+
+        get
+        {
+
+            return curTime;
+
+        }
+
+
+    }
 }
