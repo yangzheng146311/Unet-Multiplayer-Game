@@ -20,6 +20,9 @@ public class GameManager:NetworkBehaviour{
 
     GameObject[] players;
 
+    [SyncVar]
+    public bool gameOn = false;
+
     
 
   
@@ -36,7 +39,7 @@ public class GameManager:NetworkBehaviour{
 
     void Update()
     {
-        if (isServer)
+        if (isServer&&gameOn)
         {
             CountDown();
         }
@@ -73,7 +76,7 @@ public class GameManager:NetworkBehaviour{
 
         players = GameObject.FindGameObjectsWithTag("Player");
 
-        Debug.Log("length="+players.Length);
+        //Debug.Log("length="+players.Length);
          maxScore = 0;
 
         for (int i = 0; i <players.Length; i++)
@@ -81,7 +84,7 @@ public class GameManager:NetworkBehaviour{
             players[i].GetComponent<PlayerBall>().PlayerIndex = i;
 
 
-            Debug.Log("Player Num " + i + "score=" + players[i].GetComponent<PlayerBall>().Score);
+            //Debug.Log("Player Num " + i + "score=" + players[i].GetComponent<PlayerBall>().Score);
 
             if(players[i].GetComponent<PlayerBall>().Score > maxScore)
             {
@@ -93,8 +96,8 @@ public class GameManager:NetworkBehaviour{
 
         }
 
-        Debug.Log("maxScore="+maxScore);
-        Debug.Log("winnerIndex="+winnerIndex);
+       // Debug.Log("maxScore="+maxScore);
+       // Debug.Log("winnerIndex="+winnerIndex);
 
 
     }

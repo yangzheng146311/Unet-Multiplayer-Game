@@ -17,6 +17,8 @@ public class PlayerBall : NetworkBehaviour
 
     GameObject scoreText;
     GameMenu gameMenu;
+
+    
    
 
     private int playerIndex;
@@ -67,7 +69,7 @@ public class PlayerBall : NetworkBehaviour
             scoreText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
 
 
-            Debug.Log(GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime);
+           // Debug.Log(GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime);
             if (GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime <= 0)
             {
                 int i = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().WinnerIndex;

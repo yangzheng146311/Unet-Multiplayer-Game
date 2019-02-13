@@ -4,13 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Resource : MonoBehaviour {
 
-    //bool isAttached = false;
-    GameObject attachObject;
     
+    GameObject attachObject;
+    GameManager gM;
+
+
+
+
+    private void Awake()
+    {
+        gM = GameObject.FindObjectOfType<GameManager>();
+    }
     // Use this for initialization
     void Start () {
-      
-
+       
     }
 	
 	// Update is called once per frame
@@ -26,6 +33,9 @@ public class Resource : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
+
+
+
         if (collision.gameObject.tag.Equals("Player"))
         {
           
