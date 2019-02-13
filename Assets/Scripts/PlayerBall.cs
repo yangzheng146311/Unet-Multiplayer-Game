@@ -44,7 +44,7 @@ public class PlayerBall : NetworkBehaviour
     {
 
         gameMenu = GameObject.FindObjectOfType<GameMenu>();
-        
+        Time.timeScale = 1;
 
     }
 
@@ -56,7 +56,6 @@ public class PlayerBall : NetworkBehaviour
     {
 
 
-        
         if (isServer==true) 
         { 
             score = transform.childCount;
@@ -86,7 +85,7 @@ public class PlayerBall : NetworkBehaviour
                 }
 
 
-                //Time.timeScale = 0;
+               
             }
         }
 
