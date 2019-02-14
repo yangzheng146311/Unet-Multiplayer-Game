@@ -11,6 +11,7 @@ public class PlayerBall : NetworkBehaviour
     private Rigidbody rb;
     
 
+    
     [SyncVar]
     private int score = 0;
 
@@ -18,7 +19,7 @@ public class PlayerBall : NetworkBehaviour
     GameObject scoreText;
     GameMenu gameMenu;
 
-    
+    GameManager gM;
    
 
     private int playerIndex;
@@ -48,6 +49,8 @@ public class PlayerBall : NetworkBehaviour
         gameMenu = GameObject.FindObjectOfType<GameMenu>();
         Time.timeScale = 1;
 
+        gM = GameObject.FindObjectOfType<GameManager>();
+
     }
 
 
@@ -57,19 +60,18 @@ public class PlayerBall : NetworkBehaviour
     private void Update()
     {
 
-
-        if (isServer==true) 
-        { 
+        if(isServer)
             score = transform.childCount;
 
-        }
+
 
         if (isLocalPlayer)
         {
+
+           
             scoreText.gameObject.GetComponent<Text>().text = "Score:" + score.ToString();
 
-
-           // Debug.Log(GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime);
+            // Debug.Log(GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime);
             if (GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().CurTime <= 0)
             {
                 int i = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>().WinnerIndex;
@@ -168,13 +170,48 @@ public class PlayerBall : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Enemy"))
+
+
+        if (gM.gameOn)
         {
-            if(transform.childCount>0)
-            Destroy(transform.GetChild(0).gameObject);
+            if (collision.gameObject.tag.Equals("Enemy"))
+            {
+                if (transform.childCount > 0)
+                    Destroy(transform.GetChild(0).gameObject);
 
 
+            }
+
+            if (collision.gameObject.tag.Equals("res"))
+            {
+
+                collision.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+                if (collision.transform.GetComponent<MeshCollider>())
+                {
+                    Destroy(collision.transform.GetComponent<MeshCollider>());
+                }
+
+                collision.transform.SetParent(transform);
+
+
+
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
