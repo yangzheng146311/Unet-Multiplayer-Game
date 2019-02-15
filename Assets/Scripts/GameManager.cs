@@ -64,18 +64,15 @@ public class GameManager:NetworkBehaviour{
         if (curTime > 0)
         {
             //Debug.Log(curTime);
-            curTime -= Time.deltaTime;
+            curTime-= Time.deltaTime;
         }
-
-        else
-            gameOn = false;
        
     }
 
    //[Command]
     private void UpdateCurrentWinner()
     {
-        Debug.Log(gameOn);
+
 
         players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -87,7 +84,7 @@ public class GameManager:NetworkBehaviour{
             players[i].GetComponent<PlayerBall>().PlayerIndex = i;
 
 
-            Debug.Log("Player Num " + i + "score=" + players[i].GetComponent<PlayerBall>().Score);
+            //Debug.Log("Player Num " + i + "score=" + players[i].GetComponent<PlayerBall>().Score);
 
             if(players[i].GetComponent<PlayerBall>().Score > maxScore)
             {
