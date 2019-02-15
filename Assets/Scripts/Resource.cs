@@ -36,17 +36,17 @@ public class Resource : MonoBehaviour {
 
 
 
-        if (collision.gameObject.tag.Equals("Player"))
-        {
+        //if (collision.gameObject.tag.Equals("Player"))
+        //{
           
-            transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        //    transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
-            if(transform.GetComponent<MeshCollider>())   Destroy(transform.GetComponent<MeshCollider>());
+        //    if(transform.GetComponent<MeshCollider>())   Destroy(transform.GetComponent<MeshCollider>());
 
-            transform.SetParent(collision.transform);
+        //    transform.SetParent(collision.transform);
 
 
-        }
+        //}
     }
 
  

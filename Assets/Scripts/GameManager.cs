@@ -64,8 +64,12 @@ public class GameManager:NetworkBehaviour{
         if (curTime > 0)
         {
             //Debug.Log(curTime);
-            curTime-= Time.deltaTime;
+            curTime -= Time.deltaTime;
         }
+
+
+        else
+            gameOn = false;
        
     }
 

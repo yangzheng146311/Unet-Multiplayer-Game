@@ -17,7 +17,7 @@ public class PlayerBall : NetworkBehaviour
 
     GameObject scoreText;
     GameMenu gameMenu;
-
+    GameManager gM;
     
    
 
@@ -44,7 +44,7 @@ public class PlayerBall : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-
+        gM = GameObject.FindObjectOfType<GameManager>();
         gameMenu = GameObject.FindObjectOfType<GameMenu>();
         Time.timeScale = 1;
 
@@ -172,6 +172,18 @@ public class PlayerBall : NetworkBehaviour
         {
             if(transform.childCount>0)
             Destroy(transform.GetChild(0).gameObject);
+
+
+        }
+
+        if(collision.gameObject.tag.Equals("res")&&gM.gameOn)
+        {
+            collision.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
+            if (collision.transform.GetComponent<MeshCollider>()) Destroy(collision.transform.GetComponent<MeshCollider>());
+
+            collision.transform.SetParent(transform);
+
 
 
         }
